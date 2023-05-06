@@ -1,0 +1,38 @@
+.footnotes a {
+  font-family: sans-serif; /* make the "back" icon look nicer */
+  text-decoration: none;
+}
+
+.footnotes a:hover {
+  font-weight: bold;
+}
+
+.toc {
+  @apply border border-solid border-black;
+}
+
+.toc-item {
+  @apply list-none;
+}
+
+.task-list-item {
+  @apply list-none -my-2;
+}
+
+.contains-task-list {
+  @apply pl-0;
+}
+
+h1:hover .icon.icon-link:before,
+h2:hover .icon.icon-link:before,
+h3:hover .icon.icon-link:before,
+h4:hover .icon.icon-link:before,
+h5:hover .icon.icon-link:before,
+h6:hover .icon.icon-link:before {
+  visibility: visible;
+  float: left;
+  margin-left: -30px;
+  width: 30px;
+  text-decoration: underline;
+  content: "#";
+}

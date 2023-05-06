@@ -14,8 +14,8 @@ function PortfolioLinks() {
           <ExternalLink href={"https://github.com/eta-dev/eta"}>
             GitHub
           </ExternalLink>
-          ) — a super-fast embedded JS template engine that supports Deno. I'm
-          hoping to release a new version soon!
+          ) — a super-fast embedded JS template engine that supports Deno.
+          I&apos;m hoping to release a new version soon!
         </li>
         <li className="text-xl mt-2">
           <span className="font-bold">Decline App</span> (
@@ -55,8 +55,8 @@ function PortfolioLinks() {
             GitHub
           </ExternalLink>
           ) — a lightweight JavaScript template engine with support for helpers,
-          partials, filters, etc. I'm not actively developing it, but this is
-          the project that helped me get into open source.
+          partials, filters, etc. I&apos;m not actively developing it, but this
+          is the project that helped me get into open source.
         </li>
         <li className="text-xl mt-2">
           <span className="font-bold">Esperaboard</span> (
@@ -68,7 +68,7 @@ function PortfolioLinks() {
             Chrome webstore
           </ExternalLink>
           ) — a Chrome extension to transform characters written in the
-          Esperanto "x-system" into Esperanto characters while typing.
+          Esperanto &quot;x-system&quot; into Esperanto characters while typing.
         </li>
         <li className="text-xl mt-2">
           <span className="font-bold">Tic-Tac-Too</span> (
@@ -80,8 +80,8 @@ function PortfolioLinks() {
             GitHub
           </ExternalLink>
           ) — AI tic-tac-toe bot built with TensorFlow.js. I built this as a
-          teenager, while just starting to learn about ML, so it's definitely
-          not the best code. But it was a great a learning experience.
+          teenager, while just starting to learn about ML, so it&apos;s
+          definitely not the best code. But it was a great learning experience.
         </li>
       </ul>
     </div>

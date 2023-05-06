@@ -88,8 +88,8 @@ function AboutSection() {
       <h2 className="text-4xl font-bold">About Me</h2>
 
       <p className="text-xl mt-6">
-        I'm currently studying at Brigham Young University in Provo, where I'm
-        pursuing a double major in Computer Science and Arabic.
+        I&apos;m currently studying at Brigham Young University in Provo, where
+        I&apos;m pursuing a double major in Computer Science and Arabic.
         <br />
         <br />I work as a research assistant in the PCCL (Perception, Control,
         and Cognition Lab), where I study novel applications of artificial
@@ -101,8 +101,8 @@ function AboutSection() {
 
       <ul className="list-disc list-outside text-xl ml-7">
         <li className="mt-2">
-          I'm passionate about language learning — I speak English, Czech, and
-          Slovak, and am currently learning Russian and Arabic.
+          I&apos;m passionate about language learning — I speak English, Czech,
+          and Slovak, and am currently learning Russian and Arabic.
         </li>
         <li className="mt-2">
           I love spending time in the outdoors! Backpacking, fishing, and

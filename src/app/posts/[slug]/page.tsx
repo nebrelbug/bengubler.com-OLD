@@ -29,15 +29,15 @@ export async function generateMetadata(
     title: title,
     description: description || "Post by Ben Gubler",
     openGraph: {
+      ...previousOG,
       title: title,
-      description: description,
-      ...previousOG
+      description: description
     },
     twitter: {
+      ...previousTwitter,
       title: title,
       description: description,
-      card: "summary",
-      ...previousTwitter
+      card: "summary"
     }
   }
 }

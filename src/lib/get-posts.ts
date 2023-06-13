@@ -39,7 +39,7 @@ export interface externalPostData extends corePostData {
 
 export type postData = internalPostData | externalPostData
 
-const speciallyCapitalizedTitles = ["EJS", "TensorFlow.js"]
+const speciallyCapitalizedTitles = ["EJS", "TensorFlow.js", "GPU"]
 
 export const getSortedPostsData = cache(
   async (limit: number | false = false) => {
@@ -167,7 +167,9 @@ export const getPostData = cache(async (slug: string) => {
     code
   }
 
-  res.frontmatter.title = title(res.frontmatter.title)
+  res.frontmatter.title = title(res.frontmatter.title, {
+    special: speciallyCapitalizedTitles
+  })
 
   return res
 })

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Ben Gubler | Contact Me"
+  title: "Contact Me"
 }
 
 export default function Contact() {

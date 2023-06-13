@@ -6,19 +6,39 @@ import { Date } from "@/components/date"
 import mdxComponents from "./mdx-components"
 
 import { getPostData } from "@/lib/get-posts"
+import { ResolvingMetadata } from "next"
 
-export async function generateMetadata({
-  params
-}: {
-  params: {
-    slug: string
-  }
-}) {
+export async function generateMetadata(
+  {
+    params
+  }: {
+    params: {
+      slug: string
+    }
+  },
+  parent: ResolvingMetadata
+) {
   const { frontmatter } = await getPostData(params.slug)
 
+  const { title, description } = frontmatter
+
+  const previousOG = (await parent).openGraph
+  const previousTwitter = (await parent).twitter
+
   return {
-    title: frontmatter.title,
-    description: frontmatter.description || "Post by Ben Gubler"
+    title: title,
+    description: description || "Post by Ben Gubler",
+    openGraph: {
+      title: title,
+      description: description,
+      ...previousOG
+    },
+    twitter: {
+      title: title,
+      description: description,
+      card: "summary",
+      ...previousTwitter
+    }
   }
 }
 

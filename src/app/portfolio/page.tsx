@@ -1,7 +1,7 @@
 import { ExternalLink } from "@/components/links"
 
 export const metadata = {
-  title: "Ben Gubler | Portfolio"
+  title: "Portfolio"
 }
 
 function PortfolioLinks() {

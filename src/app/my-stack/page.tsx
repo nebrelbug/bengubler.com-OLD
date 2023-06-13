@@ -22,7 +22,7 @@ function LinkList({ tools }: { tools: Array<linkList> }) {
 }
 
 export const metadata = {
-  title: "Ben Gubler | My Stack"
+  title: "My Stack"
 }
 
 export default function Stack() {

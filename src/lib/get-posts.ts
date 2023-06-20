@@ -27,6 +27,7 @@ interface corePostData {
   date: string
   title: string
   site: string | false
+  draft?: true
 }
 
 interface internalPostData extends corePostData {
@@ -45,26 +46,30 @@ export const getSortedPostsData = cache(
   async (limit: number | false = false) => {
     // Get file names under /posts
     const fileNames = fs.readdirSync(postsDirectory)
-    const internalPostsData = fileNames.map((fileName) => {
-      const link = fileName.replace(/\.mdx$/, "")
+    const internalPostsData = fileNames
+      .map((fileName) => {
+        const link = fileName.replace(/\.mdx$/, "")
 
-      // Read markdown file as string
-      const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, "utf8")
+        // Read markdown file as string
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, "utf8")
 
-      // Use gray-matter to parse the post metadata section
-      const matterResult = matter(fileContents)
+        // Use gray-matter to parse the post metadata section
+        const matterResult = matter(fileContents)
 
-      // Combine the data with the slug
-      let res = {
-        link,
-        type: "internal",
-        site: false,
-        ...matterResult.data
-      } as internalPostData
+        // Combine the data with the slug
+        let res = {
+          link,
+          type: "internal",
+          site: false,
+          ...matterResult.data
+        } as internalPostData
 
-      return res
-    })
+        return res
+      })
+      .filter((postData) => {
+        return postData.draft !== true
+      })
 
     const externalPostsData = externalPosts
 
@@ -102,36 +107,34 @@ export const getSortedPostsData = cache(
 export const getAllInternalPosts = cache(async () => {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
-  const internalPostsData = fileNames.map((fileName) => {
-    const link = fileName.replace(/\.mdx$/, "")
+  const internalPostsData = fileNames
+    .map((fileName) => {
+      const link = fileName.replace(/\.mdx$/, "")
 
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, "utf8")
+      // Read markdown file as string
+      const fullPath = path.join(postsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, "utf8")
 
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+      // Use gray-matter to parse the post metadata section
+      const matterResult = matter(fileContents)
 
-    // Combine the data with the slug
-    let res = {
-      link,
-      ...matterResult.data
-    } as internalPostData
+      // Combine the data with the slug
+      let res = {
+        link,
+        ...matterResult.data
+      } as internalPostData
 
-    return res
-  })
+      return res
+    })
+    .filter((postData) => {
+      return postData.draft !== true
+    })
 
   return internalPostsData
 })
 
-export const getAllPostIds = cache(async () => {
-  const fileNames = fs.readdirSync(postsDirectory)
-
-  return fileNames.map((fileName) => {
-    return {
-      slug: fileName.replace(/\.mdx$/, "")
-    }
-  })
+export const getValidSlugs = cache(async () => {
+  return (await getAllInternalPosts()).map((post) => post.link)
 })
 
 export const getPostData = cache(async (slug: string) => {

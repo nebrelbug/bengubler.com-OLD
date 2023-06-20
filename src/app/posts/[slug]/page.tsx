@@ -5,8 +5,9 @@ import { getMDXComponent } from "mdx-bundler/client"
 import { Date } from "@/components/date"
 import mdxComponents from "./mdx-components"
 
-import { getPostData } from "@/lib/get-posts"
+import { getPostData, getValidSlugs } from "@/lib/get-posts"
 import { ResolvingMetadata } from "next"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata(
   {
@@ -18,6 +19,12 @@ export async function generateMetadata(
   },
   parent: ResolvingMetadata
 ) {
+  const validSlugs = await getValidSlugs()
+
+  if (!validSlugs.includes(params.slug)) {
+    notFound()
+  }
+
   const { frontmatter } = await getPostData(params.slug)
 
   const { title, description } = frontmatter
@@ -49,6 +56,12 @@ export default async function Post({
     slug: string
   }
 }) {
+  const validSlugs = await getValidSlugs()
+
+  if (!validSlugs.includes(params.slug)) {
+    notFound()
+  }
+
   const { frontmatter, code } = await getPostData(params.slug)
 
   // We don't want to needlessly recompile our MDX

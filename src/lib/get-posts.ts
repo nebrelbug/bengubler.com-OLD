@@ -19,6 +19,7 @@ import { cache } from "react"
 // TODO: pre-generate posts (in [slug]/page.jsx, posts/page.jsx, posts-list)
 
 import { externalPosts } from "./data/external-writing"
+import { es } from "date-fns/locale"
 
 const postsDirectory = path.join(process.cwd(), "posts")
 
@@ -40,7 +41,27 @@ export interface externalPostData extends corePostData {
 
 export type postData = internalPostData | externalPostData
 
-const speciallyCapitalizedTitles = ["EJS", "TensorFlow.js", "GPU", "LLMs"]
+const speciallyCapitalizedTitles = [
+  "EJS",
+  "TensorFlow.js",
+  "GPU",
+  "LLMs",
+  "FSDP",
+  "vs",
+  "DeepSpeed"
+]
+
+let capitalizationOptions: Record<string, string> = {}
+
+for (let title of speciallyCapitalizedTitles) {
+  let escapedTitle = title.replace(/[-\/\\^$*+?.()|[\]{}]/gi, "\\$&")
+
+  escapedTitle = escapedTitle.replace(/[A-Za-z]/g, function (match) {
+    return "[" + match.toLowerCase() + match.toUpperCase() + "]"
+  })
+
+  capitalizationOptions[escapedTitle] = title
+}
 
 export const getSortedPostsData = cache(
   async (limit: number | false = false) => {
@@ -149,7 +170,10 @@ export const getPostData = cache(async (slug: string) => {
       // plugins in the future.
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
-        remarkCapitalizeHeadings,
+        [
+          remarkCapitalizeHeadings,
+          { replaceHeadingRegExp: capitalizationOptions }
+        ],
         remarkGfm,
         remarkMath
       ]

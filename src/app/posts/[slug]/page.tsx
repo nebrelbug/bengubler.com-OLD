@@ -9,6 +9,8 @@ import { getPostData, getValidSlugs } from "@/lib/get-posts"
 import { ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 
+import { Social } from "@/components/social"
+
 export async function generateMetadata(
   {
     params
@@ -75,10 +77,15 @@ export default async function Post({
           <Date dateString={frontmatter.date} />
         </p>
         {frontmatter.description && (
-          <p className="text-xl italic mt-4">{frontmatter.description}</p>
+          <p className="text-xl italic mt-4 mb-1">{frontmatter.description}</p>
         )}
 
-        <hr />
+        <Social
+          url={`https://bengubler.com/posts/${params.slug}`}
+          title={frontmatter.title + "\n--\n" + frontmatter.description}
+        />
+
+        <hr className="mt-1" />
 
         <MDX components={mdxComponents} />
       </article>

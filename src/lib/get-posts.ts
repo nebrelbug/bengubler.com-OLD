@@ -48,7 +48,9 @@ const speciallyCapitalizedTitles = [
   "LLMs",
   "FSDP",
   "vs",
-  "DeepSpeed"
+  "DeepSpeed",
+  "HPC",
+  "ML"
 ]
 
 let capitalizationOptions: Record<string, string> = {}

@@ -51,6 +51,16 @@ export async function generateMetadata(
   }
 }
 
+export async function generateStaticParams() {
+  const validSlugs = await getValidSlugs()
+
+  return validSlugs.map((slug) => ({
+    params: {
+      slug: slug
+    }
+  }))
+}
+
 export default async function Post({
   params
 }: {

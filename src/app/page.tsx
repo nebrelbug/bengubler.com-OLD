@@ -121,8 +121,6 @@ function PostsSection() {
     <div className="mt-20">
       {/* because of the gap-20 */}
       <h2 className="text-4xl font-bold">Recent Posts</h2>
-      {/* Known error, being worked on upstream. TODO: remove after fix */}
-      {/* @ts-expect-error Async Server Component */}
       <PostsList limit={3} />
       <p className="ml-7 mt-4">
         <InternalLink href="/posts">See all posts →</InternalLink>

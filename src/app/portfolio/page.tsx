@@ -71,7 +71,7 @@ function PortfolioLinks() {
           Esperanto &quot;x-system&quot; into Esperanto characters while typing.
         </li>
         <li className="text-xl mt-2">
-          <span className="font-bold">"Tic-Tac-Too"</span> (
+          <span className="font-bold">&quot;Tic-Tac-Too&quot;</span> (
           <ExternalLink href={"https://tictactoe.bengubler.com/"}>
             website{" "}
           </ExternalLink>

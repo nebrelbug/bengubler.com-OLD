@@ -12,6 +12,7 @@ export const metadata = {
     template: "%s | Ben Gubler",
     default: "Ben Gubler"
   },
+  metadataBase: new URL("https://www.bengubler.com"),
   description:
     "Ben Gubler is a computer scientist, open-source maintainer, and aspiring polyglot",
   openGraph: {

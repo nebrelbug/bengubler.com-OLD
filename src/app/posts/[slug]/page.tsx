@@ -3,6 +3,7 @@ import "./markdown.css"
 import { getMDXComponent } from "mdx-bundler/client"
 
 import { Date } from "@/components/date"
+import { Comments } from "@/components/comments"
 import mdxComponents from "./mdx-components"
 
 import { getPostData, getValidSlugs } from "@/lib/get-posts"
@@ -99,6 +100,9 @@ export default async function Post({
 
         <MDX components={mdxComponents} />
       </article>
+      <div className="w-[80%] max-w-screen-md m-auto mt-10">
+        <Comments />
+      </div>
     </>
   )
 }

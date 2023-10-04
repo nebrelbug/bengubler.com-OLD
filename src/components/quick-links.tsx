@@ -17,9 +17,11 @@ export function QuickLinks({}) {
           <InternalLink href={`/contact`}>👋 Contact Me</InternalLink>
         </li>
 
-        {/* <li className="text-xl mt-2">
-          <InternalLink href={`/resume`}>📃 Resumé</InternalLink>
-        </li> */}
+        <li className="text-xl mt-2">
+          <InternalLink href={`/ben-gubler-resume.pdf`}>
+            📃 Resumé / CV
+          </InternalLink>
+        </li>
 
         <li className="text-xl mt-2">
           <InternalLink href={`/my-stack`}>🚀 My Stack</InternalLink>

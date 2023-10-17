@@ -50,13 +50,16 @@ const speciallyCapitalizedTitles = [
   "vs",
   "DeepSpeed",
   "HPC",
-  "ML"
+  "ML",
+  "gom",
+  "nvidia-smi",
+  "TL;DR"
 ]
 
 let capitalizationOptions: Record<string, string> = {}
 
 for (let title of speciallyCapitalizedTitles) {
-  let escapedTitle = title.replace(/[-\/\\^$*+?.()|[\]{}]/gi, "\\$&")
+  let escapedTitle = title.replace(/[\/\\^$*+?.()|[\]{}]/gi, "\\$&")
 
   escapedTitle = escapedTitle.replace(/[A-Za-z]/g, function (match) {
     return "[" + match.toLowerCase() + match.toUpperCase() + "]"

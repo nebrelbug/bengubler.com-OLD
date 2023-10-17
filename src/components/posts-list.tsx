@@ -4,7 +4,7 @@ import { InternalLink, ExternalLink } from "./links"
 import { getSortedPosts } from "@/lib/get-posts"
 // in the future, I'll add options for filtering, showing only local or featured, etc.
 
-export function PostsList({ limit }: { limit: number }) {
+export function PostsList({ limit }: { limit: number | false }) {
   let allPostsData = getSortedPosts(limit)
 
   return (

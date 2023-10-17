@@ -24,7 +24,7 @@ export type postData = {
   site?: string
 }
 
-export function getSortedPosts(limit?: number) {
+export function getSortedPosts(limit?: number | false) {
   const localPosts: postData[] = processPosts(allPosts).map((postData) => {
     return { ...postData, source: "internal" }
   })

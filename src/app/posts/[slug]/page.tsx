@@ -1,16 +1,21 @@
 import "./markdown.css"
 
-import { getMDXComponent } from "mdx-bundler/client"
-
-import { Date } from "@/components/date"
-import { Comments } from "@/components/comments"
-import mdxComponents from "./mdx-components"
-
-import { getPostData, getValidSlugs } from "@/lib/get-posts"
-import { ResolvingMetadata } from "next"
+import { allPosts } from "contentlayer/generated"
+import { getMDXComponent } from "next-contentlayer/hooks"
 import { notFound } from "next/navigation"
+import { ResolvingMetadata } from "next"
 
+import { processPosts } from "@/lib/get-posts"
+import { Comments } from "@/components/comments"
+import { Date } from "@/components/date"
 import { Social } from "@/components/social"
+import { mdxComponents } from "./mdx-components"
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post._raw.flattenedPath
+  }))
+}
 
 export async function generateMetadata(
   {
@@ -22,15 +27,15 @@ export async function generateMetadata(
   },
   parent: ResolvingMetadata
 ) {
-  const validSlugs = await getValidSlugs()
+  // Find the post for the current page.
+  const post = processPosts(allPosts).find(
+    (post) => post._raw.flattenedPath === params.slug
+  )
 
-  if (!validSlugs.includes(params.slug)) {
-    notFound()
-  }
+  // 404 if the post does not exist.
+  if (!post) notFound()
 
-  const { frontmatter } = await getPostData(params.slug)
-
-  const { title, description } = frontmatter
+  const { title, description } = post
 
   const previousOG = (await parent).openGraph
   const previousTwitter = (await parent).twitter
@@ -52,53 +57,37 @@ export async function generateMetadata(
   }
 }
 
-export async function generateStaticParams() {
-  const validSlugs = await getValidSlugs()
+export default async function Page({ params }: { params: { slug: string } }) {
+  // Find the post for the current page.
+  const post = processPosts(allPosts).find(
+    (post) => post._raw.flattenedPath === params.slug
+  )
 
-  return validSlugs.map((slug) => ({
-    params: {
-      slug: slug
-    }
-  }))
-}
+  // 404 if the post does not exist.
+  if (!post) notFound()
 
-export default async function Post({
-  params
-}: {
-  params: {
-    slug: string
-  }
-}) {
-  const validSlugs = await getValidSlugs()
-
-  if (!validSlugs.includes(params.slug)) {
-    notFound()
-  }
-
-  const { frontmatter, code } = await getPostData(params.slug)
-
-  // We don't want to needlessly recompile our MDX
-  const MDX = getMDXComponent(code)
+  // Parse the MDX file via the getMDXComponent hook.
+  const MDXContent = getMDXComponent(post.body.code)
 
   return (
     <>
       <article className="prose w-[80%] max-w-screen-md m-auto">
-        <h1 className="mb-1 mt-5 pt-4">{frontmatter.title}</h1>
+        <h1 className="mb-1 mt-5 pt-4">{post.title}</h1>
         <p className="my-0">
-          <Date dateString={frontmatter.date} />
+          <Date dateString={post.date} />
         </p>
-        {frontmatter.description && (
-          <p className="text-xl italic mt-4 mb-1">{frontmatter.description}</p>
+        {post.description && (
+          <p className="text-xl italic mt-4 mb-1">{post.description}</p>
         )}
 
         <Social
           url={`https://bengubler.com/posts/${params.slug}`}
-          title={frontmatter.title + "\n--\n" + frontmatter.description}
+          title={post.title + "\n--\n" + post.description}
         />
 
         <hr className="mt-1" />
 
-        <MDX components={mdxComponents} />
+        <MDXContent components={mdxComponents} />
       </article>
       <div className="w-[80%] max-w-screen-md m-auto mt-10">
         <Comments />

@@ -1,14 +1,15 @@
 // See https://maxleiter.com/blog/build-a-blog-with-nextjs-13
 
+import { allPosts } from "contentlayer/generated"
 import { parseISO } from "date-fns"
 
-import { getAllInternalPosts } from "@/lib/get-posts"
+import { processPosts } from "@/lib/get-posts"
 
-export default async function sitemap() {
-  const posts = await getAllInternalPosts()
+export default function sitemap() {
+  const posts = processPosts(allPosts)
 
   const postLinks = posts.map((post) => ({
-    url: `https://bengubler.com/posts/${post.link}`,
+    url: `https://bengubler.com${post.url}`,
     lastModified: parseISO(post.date)
   }))
 

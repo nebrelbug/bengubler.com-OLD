@@ -83,6 +83,19 @@ function PortfolioLinks() {
           teenager, while just starting to learn about ML, so it&apos;s
           definitely not the best code. But it was a great learning experience.
         </li>
+        <li className="text-xl mt-2">
+          <span className="font-bold">GOM</span> (
+          <ExternalLink href={"https://pypi.org/project/gom/"}>
+            PyPI{" "}
+          </ExternalLink>
+          |{" "}
+          <ExternalLink href={"https://github.com/nebrelbug/gom"}>
+            GitHub
+          </ExternalLink>
+          ) — Pip package with CLI tool to monitor GPU usage across Docker
+          containers. A minimalistic alternative to <code>nvidia-smi</code>.
+          Stands for "GPU Output Monitor".
+        </li>
       </ul>
     </div>
   )

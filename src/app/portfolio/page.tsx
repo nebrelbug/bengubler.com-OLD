@@ -94,7 +94,7 @@ function PortfolioLinks() {
           </ExternalLink>
           ) — Pip package with CLI tool to monitor GPU usage across Docker
           containers. A minimalistic alternative to <code>nvidia-smi</code>.
-          Stands for "GPU Output Monitor".
+          Stands for &quot;GPU Output Monitor&quot;.
         </li>
       </ul>
     </div>

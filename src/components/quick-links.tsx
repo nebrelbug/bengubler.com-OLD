@@ -32,6 +32,18 @@ export function QuickLinks({}) {
             👀 Pay Me
           </ExternalLink>
         </li>
+
+        <li className="text-xl mt-2">
+          <InternalLink href={`/czech-case-cards`}>
+            🇨🇿 Czech Case Cards
+          </InternalLink>
+        </li>
+
+        <li className="text-xl mt-2">
+          <InternalLink href={`/russian-case-cards`}>
+            🇷🇺 Russian Case Cards
+          </InternalLink>
+        </li>
       </ul>
     </div>
   )

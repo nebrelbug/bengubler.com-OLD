@@ -37,6 +37,14 @@ export default function Home() {
 
       <h2>Basic Case Card</h2>
 
+      <p>
+        Note: this won&apos;t display properly on mobile: go{" "}
+        <InternalLink href="/declensions/czech-cases-card-basic.pdf">
+          here
+        </InternalLink>{" "}
+        to view and download the PDF in a new window.
+      </p>
+
       <embed
         src="/declensions/czech-cases-card-basic.pdf"
         width="100%"
@@ -45,6 +53,14 @@ export default function Home() {
       ></embed>
 
       <h2>Advanced Case Card</h2>
+
+      <p>
+        Note: this won&apos;t display properly on mobile: go{" "}
+        <InternalLink href="/declensions/czech-cases-card-advanced.pdf">
+          here
+        </InternalLink>{" "}
+        to view and download the PDF in a new window.
+      </p>
 
       <embed
         src="/declensions/czech-cases-card-advanced.pdf"

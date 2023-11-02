@@ -34,6 +34,14 @@ export default function Home() {
 
       <h2>Case Card</h2>
 
+      <p>
+        Note: this won&apos;t display properly on mobile: go{" "}
+        <InternalLink href="/declensions/russian-cases-card.pdf">
+          here
+        </InternalLink>{" "}
+        to view and download the PDF in a new window.
+      </p>
+
       <embed
         src="/declensions/russian-cases-card.pdf"
         width="100%"

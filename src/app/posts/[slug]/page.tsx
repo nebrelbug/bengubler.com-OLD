@@ -80,10 +80,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <p className="text-xl italic mt-4 mb-1">{post.description}</p>
         )}
 
-        <Social
-          url={`https://bengubler.com/posts/${params.slug}`}
-          title={post.title + "\n--\n" + post.description}
-        />
+        <Social title={post.title + "\n--\n" + post.description} />
 
         <hr className="mt-1" />
 

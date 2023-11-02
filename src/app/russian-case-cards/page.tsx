@@ -19,8 +19,8 @@ export default function Home() {
       <hr className="mt-1" />
 
       <p>
-        I spent many hours creating this! Print it out and you'll memorize the
-        Russian declension patterns in no time.
+        I spent many hours creating this! Print it out and you&apos;ll memorize
+        the Russian declension patterns in no time.
       </p>
 
       <p>

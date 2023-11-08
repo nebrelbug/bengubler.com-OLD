@@ -6,6 +6,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import remarkCapitalizeHeadings from "remark-capitalize-headings"
 import remarkGfm from "remark-gfm"
 import remarkMath from "remark-math"
+import remarkToc from "remark-toc"
 
 import { capitalizationOptions } from "./src/lib/capitalization"
 
@@ -36,7 +37,8 @@ export default makeSource({
         { replaceHeadingRegExp: capitalizationOptions }
       ],
       remarkGfm,
-      remarkMath
+      remarkMath,
+      remarkToc
     ],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeMathJax]
   }

@@ -2,6 +2,9 @@ import Link from "next/link"
 
 import { twMerge } from "tailwind-merge"
 
+const linkStyle =
+  "font-semibold text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:font-bold"
+
 export function ExternalLink({
   href,
   label,
@@ -15,10 +18,7 @@ export function ExternalLink({
 }) {
   return (
     <a
-      className={twMerge(
-        "font-semibold text-muted-foreground hover:font-bold hover:text-secondary-foreground",
-        className
-      )}
+      className={twMerge(linkStyle, className)}
       target="_blank"
       rel="noopener noreferrer"
       href={href}
@@ -40,14 +40,7 @@ export function InternalLink({
   children: React.ReactNode
 }) {
   return (
-    <Link
-      className={twMerge(
-        "font-semibold text-muted-foreground hover:font-bold hover:text-secondary-foreground",
-        className
-      )}
-      title={label}
-      href={href}
-    >
+    <Link className={twMerge(linkStyle, className)} title={label} href={href}>
       {children}
     </Link>
   )

@@ -2,8 +2,9 @@ import "./globals.css"
 
 import { Analytics } from "@vercel/analytics/react"
 
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import { ThemeProvider } from "@/components/theme-provider"
 
 // TODO: add more meta tags
 
@@ -40,13 +41,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="my-16 mx-5">{children}</main>
-          <Footer />
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="my-16 mx-5">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

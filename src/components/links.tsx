@@ -16,7 +16,7 @@ export function ExternalLink({
   return (
     <a
       className={twMerge(
-        "font-semibold text-gray-600 hover:font-bold hover:text-black",
+        "font-semibold text-muted-foreground hover:font-bold hover:text-secondary-foreground",
         className
       )}
       target="_blank"
@@ -42,7 +42,7 @@ export function InternalLink({
   return (
     <Link
       className={twMerge(
-        "font-semibold text-gray-600 hover:font-bold hover:text-black",
+        "font-semibold text-muted-foreground hover:font-bold hover:text-secondary-foreground",
         className
       )}
       title={label}

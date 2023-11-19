@@ -1,14 +1,14 @@
 import "./markdown.css"
 
 import { allPosts } from "contentlayer/generated"
+import { ResolvingMetadata } from "next"
 import { getMDXComponent } from "next-contentlayer/hooks"
 import { notFound } from "next/navigation"
-import { ResolvingMetadata } from "next"
 
-import { processPosts } from "@/lib/get-posts"
 import { Comments } from "@/components/comments"
 import { Date } from "@/components/date"
 import { Social } from "@/components/social"
+import { processPosts } from "@/lib/get-posts"
 import { mdxComponents } from "./mdx-components"
 
 export async function generateStaticParams() {
@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <article className="prose w-[80%] max-w-screen-md m-auto">
+      <article className="prose dark:prose-invert w-[80%] max-w-screen-md m-auto">
         <h1 className="mb-1 mt-5 pt-4">{post.title}</h1>
         <p className="my-0">
           <Date dateString={post.date} />

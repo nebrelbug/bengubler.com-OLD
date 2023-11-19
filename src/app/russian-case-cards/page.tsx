@@ -1,6 +1,6 @@
 import { Comments } from "@/components/comments"
-import { Social } from "@/components/social"
 import { ExternalLink, InternalLink } from "@/components/links"
+import { Social } from "@/components/social"
 
 export const metadata = {
   title: "Russian Case Cards",
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="max-w-screen-lg m-auto prose">
+    <div className="max-w-screen-lg m-auto prose dark:prose-invert">
       <h1 className="mb-1 mt-5 pt-4">{metadata.title}</h1>
 
       <p className="text-xl italic mt-4 mb-1">{metadata.description}</p>

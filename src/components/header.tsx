@@ -1,7 +1,10 @@
 "use client"
 
-import { InternalLink as Link } from "./links"
+import { ModeToggle } from "@/components/ModeToggle"
 import useScroll from "../hooks/use-scroll"
+import { InternalLink as Link } from "./links"
+
+let m = ModeToggle
 
 export function Header() {
   const scrolled = useScroll(50)
@@ -10,8 +13,8 @@ export function Header() {
     <div
       className={`fixed top-0 w-full ${
         scrolled
-          ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
-          : "bg-white/0"
+          ? "border-b border-border bg-background/50 backdrop-blur-xl"
+          : "bg-background/0"
       } transition-[border-color,border-bottom-width] px-5`}
     >
       <div className="flex h-16 max-w-screen-lg items-center justify-between xl:mx-auto">
@@ -29,6 +32,7 @@ export function Header() {
               Posts
             </button>
           </Link>
+          <ModeToggle />
         </div>
       </div>
     </div>

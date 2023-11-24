@@ -46,7 +46,17 @@ export async function generateMetadata(
     openGraph: {
       ...previousOG,
       title: title,
-      description: description
+      description: description,
+      images: [
+        {
+          url: `https://bengubler.com/api/og?title=${encodeURIComponent(
+            title
+          )}?description=${encodeURIComponent(description)}`,
+          width: 1200,
+          height: 630,
+          alt: ""
+        }
+      ]
     },
     twitter: {
       ...previousTwitter,

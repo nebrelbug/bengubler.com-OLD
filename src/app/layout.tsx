@@ -23,7 +23,15 @@ export const metadata = {
     url: "https://bengubler.com",
     siteName: "Ben Gubler",
     locale: "en_US",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "https://bengubler.com/api/og",
+        width: 1200,
+        height: 630,
+        alt: ""
+      }
+    ]
   },
   twitter: {
     title: "Ben Gubler",

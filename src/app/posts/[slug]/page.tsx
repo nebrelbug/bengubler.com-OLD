@@ -51,7 +51,7 @@ export async function generateMetadata(
         {
           url: `https://bengubler.com/api/og?title=${encodeURIComponent(
             title
-          )}?description=${encodeURIComponent(description)}`,
+          )}&description=${encodeURIComponent(description)}`,
           width: 1200,
           height: 630,
           alt: ""

@@ -49,6 +49,12 @@ export default function Stack() {
             name: "Google Calendar",
             link: "https://calendar.google.com/",
             description: "Boring, but effective."
+          },
+          {
+            name: "Monarch Money",
+            link: "https://www.monarchmoney.com/referral/y3j7tkgk88",
+            description:
+              "I switched from Mint to Monarch and have been enjoying it so far."
           }
         ]}
       />
@@ -159,6 +165,11 @@ export default function Stack() {
             name: "GitHub Actions",
             link: "https://github.com/features/actions",
             description: "CI/CD built in to GitHub"
+          },
+          {
+            name: "Fathom Analytics",
+            link: "https://usefathom.com/ref/QKJTBM", // TODO: update to personal link instead of TinyLingo
+            description: "Like Google Analytics, but private and minimalist"
           }
         ]}
       />

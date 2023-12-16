@@ -1,6 +1,6 @@
 import "./globals.css"
 
-import { Analytics } from "@vercel/analytics/react"
+import Script from "next/script"
 
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
@@ -63,7 +63,13 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
-        <Analytics />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            async
+            src="https://umami.bengubler.com/script.js"
+            data-website-id="498eb52a-3a81-433c-9813-8d45f976cce7"
+          />
+        )}
       </body>
     </html>
   )

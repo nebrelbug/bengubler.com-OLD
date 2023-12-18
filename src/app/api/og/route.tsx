@@ -18,7 +18,7 @@ export async function GET(request: Request) {
 
     return new ImageResponse(
       (
-        <div tw="flex flex-col h-full w-full bg-white items-center p-5">
+        <div tw="flex flex-col h-full w-full bg-white items-center p-5 px-24">
           <h2 tw="absolute top-5 uppercase tracking-.1 text-5xl w-full mt-0">
             bengubler.com
           </h2>
